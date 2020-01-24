@@ -7,7 +7,7 @@ LABEL io.k8s.description="Platform for building and running Java8 apps" \
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,java8" \
       io.openshift.s2i.destination="/opt/app" \
-      io.openshift.s2i.scripts-url=image:///usr/local/s2i
+      io.openshift.s2i.scripts-url=image:///tmpc/src
 RUN adduser --system -u 1001 javauser
 RUN mkdir -p /opt/app && chown -R javauser: /opt/app
 RUN mkdir /tmp/src
@@ -16,7 +16,6 @@ RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
     chgrp -R 0 /tmp/src && \
     chmod -R g+w /tmp/src
-RUN chmod 777 /usr/local/s2i/*
 USER 1001
 EXPOSE 8080
 
