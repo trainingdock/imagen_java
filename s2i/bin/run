@@ -1,1 +1,2 @@
-
+#!/bin/bash -e
+java ${JAVA_OPTS} -jar /opt/app/openshift-app.jar
