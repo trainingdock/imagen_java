@@ -10,7 +10,7 @@ LABEL io.k8s.description="Platform for building and running Java8 apps" \
       io.openshift.s2i.scripts-url=image:///usr/local/s2i
 RUN adduser --system -u 10001 javauser
 RUN mkdir -p /opt/app && chown -R javauser: /opt/app
-COPY ./S2iScripts/ /usr/local/s2i
+COPY ./s2i/bin/ /usr/local/s2i
 USER 10001
 EXPOSE 8080
 CMD ["/usr/local/s2i/usage"]
