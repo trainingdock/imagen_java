@@ -11,6 +11,7 @@ LABEL io.k8s.description="Platform for building and running Java8 apps" \
 RUN adduser --system -u 10001 javauser
 RUN mkdir -p /opt/app && chown -R javauser: /opt/app
 COPY ./s2i/bin/ /usr/local/s2i
+RUN chmod 777 /usr/local/s2i
 USER 10001
 EXPOSE 8080
 CMD ["/usr/local/s2i/usage"]
