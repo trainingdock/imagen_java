@@ -11,7 +11,7 @@ LABEL io.k8s.description="Platform for building and running Java8 apps" \
 RUN adduser --system -u 1001 javauser
 RUN mkdir -p /opt/app && chown -R javauser: /opt/app
 RUN mkdir /tmp/src
-COPY ./s2i/bin/ /tmp/scripts
+COPY ./s2i/bin/ /tmp/src
 RUN rm -rf /tmp/src/.git* && \
     chown -R 1001 /tmp/src && \
     chgrp -R 0 /tmp/src && \
@@ -19,6 +19,4 @@ RUN rm -rf /tmp/src/.git* && \
 USER 1001
 EXPOSE 8080
 
-RUN /tmp/scripts/assemble
 
-CMD [ "/tmp/scripts/run" ]
